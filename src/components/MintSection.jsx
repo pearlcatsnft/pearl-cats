@@ -1,19 +1,33 @@
 import React, { useState } from 'react'
 import './MintSection.css'
+import { sendPRL } from '../wallet.js'
 
 const TREASURY = 'prl1ppprdt49dyv2am07fyuykfs3f6r3cgfcsa5fwc2sqnszuhlrcqyqs9v5j8u'
 const MINT_PRICE = 0.77
 
 export default function MintSection({ wallet, stats, onOpenWallet }) {
-  const [copied, setCopied] = useState(false)
   const [amount, setAmount] = useState(1)
+  const [sending, setSending] = useState(false)
+  const [txid, setTxid] = useState(null)
+  const [error, setError] = useState(null)
   const progress = (stats.minted / stats.total) * 100
   const totalCost = (amount * MINT_PRICE).toFixed(2)
 
-  function copyTreasury() {
-    navigator.clipboard.writeText(TREASURY)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  async function handleMint() {
+    setSending(true)
+    setError(null)
+    setTxid(null)
+    try {
+      const result = await sendPRL(wallet.privkey, wallet.address, TREASURY, parseFloat(totalCost))
+      if (result.ok) {
+        setTxid(result.txid)
+      } else {
+        setError(result.error || 'Transaction failed')
+      }
+    } catch (e) {
+      setError(e.message)
+    }
+    setSending(false)
   }
 
   return (
@@ -25,8 +39,6 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
             <video className="box-img" autoPlay loop muted playsInline>
               <source src="https://gold-faithful-guan-207.mypinata.cloud/ipfs/bafybeih757ea3isfe76f5k7ypdtxwu7swnfkmqqutaz5tsgyttpb6nxuly" type="video/mp4"/>
             </video>
-            
-            
           </div>
         </div>
 
@@ -58,14 +70,21 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
             <span>Max 10 NFTs per wallet</span>
           </div>
 
-
           {!wallet ? (
             <button className="btn-mint" onClick={onOpenWallet}>Connect Wallet to Mint</button>
+          ) : txid ? (
+            <div className="mint-success">
+              <div className="success-title">Minted! Your Pearl Cat is on its way.</div>
+              <div className="success-txid">TX: {txid.slice(0,16)}...</div>
+              <button className="btn-mint-again" onClick={() => setTxid(null)}>Mint Another</button>
+            </div>
           ) : (
-            <button className="btn-mint active" onClick={copyTreasury}>
-              {copied ? '✓ Address Copied!' : `Mint · ${totalCost} PRL`}
+            <button className="btn-mint active" onClick={handleMint} disabled={sending}>
+              {sending ? 'Broadcasting...' : `Mint ${amount} Pearl Cat${amount>1?'s':''} · ${totalCost} PRL`}
             </button>
           )}
+
+          {error && <div className="mint-error">{error}</div>}
           <p className="mint-note">Delivered within 1–2 blocks (~2 min) after payment</p>
         </div>
       </div>
