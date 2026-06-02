@@ -60,3 +60,4 @@
   .hero-img { width: 180px; height: 180px; }
   .hero-title { font-size: 40px; }
 }
+.hero-img { width: 320px !important; height: 320px !important; }

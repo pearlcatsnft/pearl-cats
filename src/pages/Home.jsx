@@ -35,10 +35,8 @@ export default function Home({ stats }) {
         </div>
         <div className="hero-visual">
           <div className="hero-box">
-            <video className="hero-img" autoPlay loop muted playsInline>
-            <source src="https://gold-faithful-guan-207.mypinata.cloud/ipfs/bafybeih757ea3isfe76f5k7ypdtxwu7swnfkmqqutaz5tsgyttpb6nxuly" type="video/mp4"/>
-          </video>
-            <div className="hero-box-label">Reveals 24h after sold out</div>
+            <img src="/blindbox.gif" alt="Pearl Cat" className="hero-img"/>
+            
           </div>
         </div>
       </section>
