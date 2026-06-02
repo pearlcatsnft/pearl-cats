@@ -1,0 +1,85 @@
+.sneak-peek {
+  padding: 80px 0; position: relative; z-index: 1;
+  border-top: 1px solid rgba(168,120,216,0.12);
+  overflow: hidden;
+}
+.sneak-header { text-align: center; margin-bottom: 48px; padding: 0 40px; }
+.sneak-badge {
+  display: inline-block; background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.8); border-radius: 20px;
+  padding: 6px 16px; font-size: 13px; color: #6858a0; margin-bottom: 14px;
+}
+.sneak-title { font-size: clamp(28px, 4vw, 44px); font-weight: 900; color: #1a0e2e; margin-bottom: 10px; letter-spacing: -1px; }
+.gradient-text {
+  background: linear-gradient(120deg, #e080b0, #a878d8, #78a8e8, #78d8b8);
+  background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: holo 6s ease infinite;
+}
+@keyframes holo { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.sneak-desc { color: #7858b8; font-size: 14px; }
+
+/* Marquee */
+.marquee-wrapper {
+  position: relative; width: 100%; overflow: hidden;
+}
+.marquee-fade-left, .marquee-fade-right {
+  position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+}
+.marquee-fade-left {
+  left: 0;
+  background: linear-gradient(to right, #e8e0f5, transparent);
+}
+.marquee-fade-right {
+  right: 0;
+  background: linear-gradient(to left, #e8e0f5, transparent);
+}
+
+.marquee-track {
+  display: flex; gap: 16px;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  padding: 8px 0;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-card {
+  position: relative; width: 220px; height: 220px;
+  border-radius: 20px; overflow: hidden; flex-shrink: 0;
+  background: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.marquee-card:hover {
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 0 8px 32px rgba(168,120,216,0.3),
+              0 0 0 2px rgba(200,160,240,0.4);
+  z-index: 5;
+}
+.marquee-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.marquee-card:hover img { transform: scale(1.05); }
+
+.marquee-glow {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(240,200,224,0) 0%, rgba(200,160,240,0) 50%, rgba(160,200,240,0) 100%);
+  transition: background 0.3s ease; pointer-events: none;
+}
+.marquee-card:hover .marquee-glow {
+  background: linear-gradient(135deg, rgba(240,200,224,0.15) 0%, rgba(200,160,240,0.2) 50%, rgba(160,200,240,0.15) 100%);
+}
+
+.sneak-note { text-align: center; font-size: 13px; color: #9888c0; font-style: italic; margin-top: 24px; padding: 0 40px; }
+
+@media (max-width: 768px) {
+  .sneak-peek { padding: 60px 0; }
+  .marquee-card { width: 160px; height: 160px; }
+}

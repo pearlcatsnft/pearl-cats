@@ -1,0 +1,55 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #2a1e3a;
+  background: #e8e0f5;
+}
+
+/* Holographic pastel background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 0% 0%, #f5c8e8cc 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 0%, #c8d8f5cc 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, #c8f5e8cc 0%, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, #e8c8f5cc 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, #f5e8d0aa 0%, transparent 60%);
+  animation: holo-bg 12s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes holo-bg {
+  0%   { opacity: 1; filter: hue-rotate(0deg); }
+  25%  { opacity: 0.85; filter: hue-rotate(15deg); }
+  50%  { opacity: 1; filter: hue-rotate(30deg); }
+  75%  { opacity: 0.85; filter: hue-rotate(15deg); }
+  100% { opacity: 1; filter: hue-rotate(0deg); }
+}
+
+/* Soft noise/shimmer overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, #fff8 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, #fff6 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+  animation: shimmer 8s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%,100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #e8e0f5; }
+::-webkit-scrollbar-thumb { background: #c0a8e8; border-radius: 3px; }
