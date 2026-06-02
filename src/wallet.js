@@ -4,11 +4,6 @@ import { HDKey } from '@scure/bip32'
 import * as secp from '@noble/secp256k1'
 import { sha256 } from '@noble/hashes/sha2.js'
 
-// Setup noble secp256k1 hash functions
-import { sha512 } from "@noble/hashes/sha2.js"
-secp.etc.sha256Sync = (...msgs) => sha256(secp.utils.concatBytes(...msgs))
-secp.etc.sha512Sync = (...msgs) => sha512(secp.utils.concatBytes(...msgs))
-
 const HRP = 'prl'
 const CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l'
 const N = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141n
