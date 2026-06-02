@@ -134,10 +134,11 @@ export function isValidAddress(addr) {
 // ===== TX SENDING =====
 
 const PEARL_NODE = 'https://api.pearlscriptions.com'
+const OWN_API = 'https://api.pearlcatsnft.com'
 const API_URL = 'https://api.pearlcatsnft.com'
 
 export async function getUTXOs(address) {
-  const r = await fetch(`${PEARL_NODE}/api/addresses/${address}/utxos?limit=100`)
+  const r = await fetch(`${OWN_API}/api/utxos/${address}`)
   const data = await r.json()
   return data.utxos || []
 }
