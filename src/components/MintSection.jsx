@@ -14,6 +14,9 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
   const totalCost = (amount * MINT_PRICE).toFixed(2)
 
   async function handleMint() {
+    const confirm = window.confirm(`Mint ${amount} Pearl Cat${amount>1?"s":""} for ${totalCost} PRL?
+
+This will send ${totalCost} PRL from your wallet to the treasury. Your Pearl Cat will be inscribed and delivered within 2 minutes.`)
     setSending(true)
     setError(null)
     setTxid(null)
