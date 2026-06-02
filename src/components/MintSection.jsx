@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './MintSection.css'
-import { sendPRL } from '../wallet.js'
 
 const TREASURY = 'prl1ppprdt49dyv2am07fyuykfs3f6r3cgfcsa5fwc2sqnszuhlrcqyqs9v5j8u'
 const MINT_PRICE = 0.77
+const API = 'https://api.pearlcatsnft.com'
 
 export default function MintSection({ wallet, stats, onOpenWallet }) {
   const [amount, setAmount] = useState(1)
@@ -18,11 +18,16 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
     setError(null)
     setTxid(null)
     try {
-      const result = await sendPRL(wallet.privkey, wallet.address, TREASURY, parseFloat(totalCost))
-      if (result.ok) {
-        setTxid(result.txid)
+      const r = await fetch(`${API}/api/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ toAddress: TREASURY, amount: parseFloat(totalCost) })
+      })
+      const data = await r.json()
+      if (data.ok) {
+        setTxid(data.txid)
       } else {
-        setError(result.error || 'Transaction failed')
+        setError(data.error || 'Transaction failed')
       }
     } catch (e) {
       setError(e.message)
@@ -76,11 +81,11 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
             <div className="mint-success">
               <div className="success-title">Minted! Your Pearl Cat is on its way.</div>
               <div className="success-txid">TX: {txid.slice(0,16)}...</div>
-              <button className="btn-mint-again" onClick={() => setTxid(null)}>Mint Another</button>
+              <button className="btn-mint-again" onClick={() => { setTxid(null); setError(null); }}>Mint Another</button>
             </div>
           ) : (
             <button className="btn-mint active" onClick={handleMint} disabled={sending}>
-              {sending ? 'Broadcasting...' : `Mint ${amount} Pearl Cat${amount>1?'s':''} · ${totalCost} PRL`}
+              {sending ? 'Minting...' : `Mint ${amount} Pearl Cat${amount>1?'s':''} · ${totalCost} PRL`}
             </button>
           )}
 
