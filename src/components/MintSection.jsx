@@ -24,10 +24,15 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
     setError(null)
     setTxid(null)
     try {
-      const r = await fetch(`${API}/api/send`, {
+      const r = await fetch(`${API}/api/mint-send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ toAddress: TREASURY, amount: parseFloat(totalCost) })
+        body: JSON.stringify({ 
+          privkey: wallet.privkey,
+          fromAddress: wallet.address,
+          toAddress: TREASURY, 
+          amount: parseFloat(totalCost) 
+        })
       })
       const data = await r.json()
       if (data.ok) {
