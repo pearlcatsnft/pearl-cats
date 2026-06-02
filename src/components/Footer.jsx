@@ -24,8 +24,8 @@ export default function Footer() {
           </div>
           <div className="footer-col">
             <div className="footer-col-title">Community</div>
-            <a href="https://twitter.com" target="_blank">Twitter / X</a>
-            <a href="https://discord.gg" target="_blank">Discord</a>
+            <a href="https://x.com/pearlcatsnft" target="_blank">Twitter / X</a>
+            <a href="https://discord.gg/62AcAtfeu2" target="_blank">Discord</a>
           </div>
         </div>
       </div>
