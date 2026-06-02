@@ -39,7 +39,9 @@ export default function Profile({ wallet, onOpenWallet }) {
         <div className="profile-header">
           <div className="profile-avatar"></div>
           <div className="profile-info">
-            <div className="profile-address">{wallet.address.slice(0,12)}...{wallet.address.slice(-8)}</div>
+            <div className="profile-address-row">
+            <span className="profile-address">{wallet.address.slice(0,12)}...{wallet.address.slice(-8)}</span>
+          </div>
             <div className="profile-badge">{nfts.length} Pearl Cat{nfts.length !== 1 ? 's' : ''}</div>
           </div>
         </div>

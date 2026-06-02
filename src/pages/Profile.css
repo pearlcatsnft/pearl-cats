@@ -68,3 +68,6 @@
   .profile-page { padding: 32px 20px; }
   .nft-grid { grid-template-columns: repeat(2, 1fr); }
 }
+.profile-address-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.btn-copy-addr { font-size: 11px; background: rgba(168,120,216,0.1); border: 1px solid rgba(168,120,216,0.2); border-radius: 6px; padding: 3px 10px; color: #7858b8; cursor: pointer; font-weight: 600; }
+.btn-copy-addr:hover { background: rgba(168,120,216,0.2); }
