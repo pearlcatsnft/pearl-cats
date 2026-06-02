@@ -1,9 +1,20 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
+import { useState, useEffect } from 'react'
+import { getBalance } from '../wallet.js'
 import MobileMenu from './MobileMenu'
 
 export default function Navbar({ wallet, onOpenWallet, onDisconnect }) {
+  const [balance, setBalance] = useState(null)
+
+  useEffect(() => {
+    if (wallet?.address) {
+      getBalance(wallet.address).then(setBalance)
+      const interval = setInterval(() => getBalance(wallet.address).then(setBalance), 30000)
+      return () => clearInterval(interval)
+    }
+  }, [wallet?.address])
   const shortAddr = wallet ? wallet.address.slice(0,8) + '...' + wallet.address.slice(-6) : null
   const location = useLocation()
   const active = (path) => location.pathname === path ? 'active' : ''
@@ -30,7 +41,7 @@ export default function Navbar({ wallet, onOpenWallet, onDisconnect }) {
       <div className="navbar-wallet">
         {wallet ? (
           <div className="wallet-connected">
-            <Link to="/profile" className="wallet-addr"><img src="/favicon.png" className="wallet-favicon" alt=""/>{shortAddr}</Link>
+            <Link to="/profile" className="wallet-addr"><img src="/favicon.png" className="wallet-favicon" alt=""/>{shortAddr}{balance !== null && <span className="wallet-balance">{parseFloat(balance).toFixed(2)} PRL</span>}</Link>
             <button className="btn-disconnect" onClick={onDisconnect}>✕</button>
           </div>
         ) : (

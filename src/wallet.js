@@ -285,3 +285,14 @@ export async function sendPRL(privkeyHex, fromAddress, toAddress, amountPRL) {
 
   return broadcastTx(rawTx.toString('hex'))
 }
+
+
+export async function getBalance(address) {
+  try {
+    const utxos = await getUTXOs(address)
+    const total = utxos.reduce((sum, u) => sum + parseFloat(u.valuePrl), 0)
+    return total.toFixed(8)
+  } catch {
+    return '0.00000000'
+  }
+}

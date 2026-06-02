@@ -88,3 +88,8 @@
   width: 16px; height: 16px; border-radius: 50%;
   object-fit: cover; vertical-align: middle; margin-right: 4px;
 }
+.wallet-balance {
+  font-size: 11px; color: #9878c8; margin-left: 6px;
+  background: rgba(168,120,216,0.1); border-radius: 6px;
+  padding: 2px 6px;
+}
