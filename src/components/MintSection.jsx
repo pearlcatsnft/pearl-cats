@@ -10,13 +10,16 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
   const [sending, setSending] = useState(false)
   const [txid, setTxid] = useState(null)
   const [error, setError] = useState(null)
+  const [showConfirm, setShowConfirm] = useState(false)
   const progress = (stats.minted / stats.total) * 100
   const totalCost = (amount * MINT_PRICE).toFixed(2)
 
-  async function handleMint() {
-    const confirm = window.confirm(`Mint ${amount} Pearl Cat${amount>1?"s":""} for ${totalCost} PRL?
+  function handleMint() {
+    setShowConfirm(true)
+  }
 
-This will send ${totalCost} PRL from your wallet to the treasury. Your Pearl Cat will be inscribed and delivered within 2 minutes.`)
+  async function confirmMint() {
+    setShowConfirm(false)
     setSending(true)
     setError(null)
     setTxid(null)
@@ -94,6 +97,23 @@ This will send ${totalCost} PRL from your wallet to the treasury. Your Pearl Cat
 
           {error && <div className="mint-error">{error}</div>}
           <p className="mint-note">Delivered within 1–2 blocks (~2 min) after payment</p>
+
+          {showConfirm && (
+            <div className="confirm-overlay">
+              <div className="confirm-modal">
+                <div className="confirm-title">Confirm Mint</div>
+                <div className="confirm-desc">
+                  You are about to mint <strong>{amount} Pearl Cat{amount>1?"s":""}</strong>
+                </div>
+                <div className="confirm-amount">{totalCost} PRL</div>
+                <div className="confirm-note">Payment will be sent to treasury. Your Pearl Cat will arrive within 2 minutes.</div>
+                <div className="confirm-buttons">
+                  <button className="btn-cancel" onClick={() => setShowConfirm(false)}>Cancel</button>
+                  <button className="btn-confirm" onClick={confirmMint}>Confirm</button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
