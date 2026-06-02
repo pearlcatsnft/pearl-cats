@@ -13,10 +13,9 @@ export default function Profile({ wallet, onOpenWallet }) {
   async function fetchNFTs() {
     setLoading(true)
     try {
-      const r = await fetch(`https://api.pearlscriptions.com/api/addresses/${wallet.address}/inscriptions?limit=50`)
+      const r = await fetch(`https://api.pearlcatsnft.com/api/nfts/${wallet.address}`)
       const data = await r.json()
-      const cats = (data.inscriptions || []).filter(i => i.protocolMarker === 'pearlscription')
-      setNfts(cats)
+      setNfts(data.nfts || [])
     } catch {}
     setLoading(false)
   }
