@@ -40,7 +40,8 @@ export default function Profile({ wallet, onOpenWallet }) {
           <div className="profile-avatar"></div>
           <div className="profile-info">
             <div className="profile-address-row">
-            <span className="profile-address">{wallet.address.slice(0,12)}...{wallet.address.slice(-8)}</span>
+            <span className="profile-address">{wallet.address}</span>
+            <button className="btn-copy-addr" onClick={() => navigator.clipboard.writeText(wallet.address).then(() => alert("Copied!"))}>Copy</button>
           </div>
             <div className="profile-badge">{nfts.length} Pearl Cat{nfts.length !== 1 ? 's' : ''}</div>
           </div>
