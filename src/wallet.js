@@ -133,6 +133,14 @@ export function isValidAddress(addr) {
 
 // ===== TX SENDING =====
 
+function compactSize(n) {
+  if (n < 0xfd) return new Uint8Array([n])
+  if (n <= 0xffff) {
+    const b = new Uint8Array(3); b[0]=0xfd; new DataView(b.buffer).setUint16(1,n,true); return b
+  }
+  const b = new Uint8Array(5); b[0]=0xfe; new DataView(b.buffer).setUint32(1,n,true); return b
+}
+
 const PEARL_NODE = 'https://api.pearlscriptions.com'
 const OWN_API = 'https://api.pearlcatsnft.com'
 const API_URL = 'https://api.pearlcatsnft.com'
