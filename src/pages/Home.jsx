@@ -18,8 +18,8 @@ export default function Home({ stats }) {
             <span className="gradient-text">NFT Collection</span>
           </h1>
           <p className="hero-desc">
-            The cutest cats on the blockchain — each one unique,<br/>
-            holographic, and yours forever. Only 7,777 exist.
+            The first cats inscribed on Pearl blockchain.<br/>
+            7,777 unique, permanent, yours forever.
           </p>
           <div className="hero-stats">
             <div className="stat"><span className="stat-num">7,777</span><span className="stat-label">Total Supply</span></div>
