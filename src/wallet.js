@@ -214,7 +214,6 @@ export async function sendPRL(privkeyHex, fromAddress, toAddress, amountPRL) {
   const outputsConcat = Buffer.concat(outputs)
 
   // Sighash for each input (taproot keypath)
-  const { sha256 } = await import('@noble/hashes/sha2.js')
 
   function taggedHash(tag, data) {
     const tagBytes = new TextEncoder().encode(tag)
