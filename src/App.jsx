@@ -23,7 +23,7 @@ export default function App() {
 
   async function fetchStats() {
     try {
-      const r = await fetch('/api/stats')
+      const r = await fetch('http://47.237.196.91/api/stats')
       const data = await r.json()
       setMintStats({ minted: data.minted, total: data.totalSupply, price: data.mintPrice })
     } catch {}
