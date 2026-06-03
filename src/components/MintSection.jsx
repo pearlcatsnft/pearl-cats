@@ -12,8 +12,22 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
   const [txid, setTxid] = useState(null)
   const [error, setError] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false)
-  const progress = (stats.minted / stats.total) * 100
+  const [displayMinted, setDisplayMinted] = useState(stats.minted)
   const totalCost = (amount * MINT_PRICE).toFixed(2)
+
+  // Slowly increment display counter every 2 minutes
+  React.useEffect(() => {
+    setDisplayMinted(stats.minted)
+    const interval = setInterval(() => {
+      setDisplayMinted(prev => {
+        if (prev < stats.total) return prev + 1
+        return prev
+      })
+    }, 120000)
+    return () => clearInterval(interval)
+  }, [stats.minted])
+
+  const progress = (displayMinted / stats.total) * 100
 
   function handleMint() {
     setShowConfirm(true)
@@ -66,8 +80,8 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
 
             <div className="progress-section">
               <div className="progress-header">
-                <span>{stats.minted} minted</span>
-                <span>{stats.total - stats.minted} remaining</span>
+                <span>{displayMinted} minted</span>
+                <span>{stats.total - displayMinted} remaining</span>
               </div>
               <div className="progress-bar">
                 <div className="progress-fill" style={{width: `${progress}%`}}/>
