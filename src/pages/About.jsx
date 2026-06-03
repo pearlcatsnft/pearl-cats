@@ -44,6 +44,15 @@ export default function About() {
           <img src="/sneak1.jpg" alt="Pearl Cat"/>
           <img src="/sneak2.jpg" alt="Pearl Cat"/>
           <img src="/sneak3.jpg" alt="Pearl Cat"/>
+          <img src="/s7.jpg" alt="Pearl Cat"/>
+          <img src="/s8.jpg" alt="Pearl Cat"/>
+          <img src="/s9.jpg" alt="Pearl Cat"/>
+          <img src="/s10.jpg" alt="Pearl Cat"/>
+          <img src="/s11.jpg" alt="Pearl Cat"/>
+          <img src="/s12.jpg" alt="Pearl Cat"/>
+          <img src="/s13.jpg" alt="Pearl Cat"/>
+          <img src="/s14.jpg" alt="Pearl Cat"/>
+          <img src="/s15.jpg" alt="Pearl Cat"/>
         </div>
           <div className="about-visual-text">
             <h2>The Collection</h2>
