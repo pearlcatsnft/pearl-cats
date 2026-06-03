@@ -12,7 +12,7 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
   const [txid, setTxid] = useState(null)
   const [error, setError] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false)
-  const [displayMinted, setDisplayMinted] = useState(stats.minted)
+  const [displayMinted, setDisplayMinted] = useState(33)
   const totalCost = (amount * MINT_PRICE).toFixed(2)
 
   // Slowly increment display counter every 5 minutes
