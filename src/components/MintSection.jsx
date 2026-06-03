@@ -23,7 +23,7 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
         if (prev < stats.total) return prev + 1
         return prev
       })
-    }, 120000)
+    }, 300000)
     return () => clearInterval(interval)
   }, [stats.minted])
 
