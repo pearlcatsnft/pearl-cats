@@ -41,19 +41,7 @@ export default function About() {
         </div>
         <div className="about-visual">
           <video className="about-video" autoPlay loop muted playsInline><source src="https://gold-faithful-guan-207.mypinata.cloud/ipfs/bafybeicjbcokml424zdoxm5qwadbkqguxf2iok54mrtvu522xjlr4e2b2m" type="video/mp4"/></video><div className="about-sneak-grid" >
-          <img src="/sneak1.jpg" alt="Pearl Cat"/>
-          <img src="/sneak2.jpg" alt="Pearl Cat"/>
-          <img src="/sneak3.jpg" alt="Pearl Cat"/>
-          <img src="/s7.jpg" alt="Pearl Cat"/>
-          <img src="/s8.jpg" alt="Pearl Cat"/>
-          <img src="/s9.jpg" alt="Pearl Cat"/>
-          <img src="/s10.jpg" alt="Pearl Cat"/>
-          <img src="/s11.jpg" alt="Pearl Cat"/>
-          <img src="/s12.jpg" alt="Pearl Cat"/>
-          <img src="/s13.jpg" alt="Pearl Cat"/>
-          <img src="/s14.jpg" alt="Pearl Cat"/>
-          <img src="/s15.jpg" alt="Pearl Cat"/>
-        </div>
+          </div>
           <div className="about-visual-text">
             <h2>The Collection</h2>
             <p>Pearl Cats are generated from multiple trait layers — backgrounds, body colors, eye styles, mouths, hats, accessories, and more. Each combination is unique and verified on-chain.</p>
