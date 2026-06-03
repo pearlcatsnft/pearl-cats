@@ -6,11 +6,23 @@ export default function About() {
   return (
     <main className="about-page">
       <div className="page-container">
+
+        {/* Header */}
         <div className="page-header">
           <div className="page-badge">About</div>
           <h1 className="page-title">What is <span className="gradient-text">Pearl Cats?</span></h1>
-          <p className="page-desc">The first cat NFT inscribed on Pearl blockchain</p>
+          <p className="page-desc">The first cat NFT collection inscribed on Pearl blockchain</p>
         </div>
+
+        {/* Stats */}
+        <div className="about-stats-row">
+          <div className="big-stat"><span className="big-num">7,777</span><span className="big-label">Total Supply</span></div>
+          <div className="big-stat"><span className="big-num">0.77</span><span className="big-label">PRL per mint</span></div>
+          <div className="big-stat"><span className="big-num">24h</span><span className="big-label">After sold out reveal</span></div>
+          <div className="big-stat"><span className="big-num">10</span><span className="big-label">Max per wallet</span></div>
+        </div>
+
+        {/* Cards */}
         <div className="about-grid">
           <div className="about-card">
             <div className="about-card-icon">✦</div>
@@ -33,23 +45,24 @@ export default function About() {
             <p>Pearl is a Proof-of-Useful-Work L1 blockchain. Pearlscriptions are the native NFT standard — permanently inscribed in transaction witness data.</p>
           </div>
         </div>
-        <div className="about-stats-row">
-          <div className="big-stat"><span className="big-num">7,777</span><span className="big-label">Total Supply</span></div>
-          <div className="big-stat"><span className="big-num">0.77</span><span className="big-label">PRL per mint</span></div>
-          <div className="big-stat"><span className="big-num">24h</span><span className="big-label">After soldout reveal</span></div>
-          <div className="big-stat"><span className="big-num">10</span><span className="big-label">Max per wallet</span></div>
-        </div>
+
+        {/* Visual */}
         <div className="about-visual">
-          <video className="about-video" autoPlay loop muted playsInline><source src="https://gold-faithful-guan-207.mypinata.cloud/ipfs/bafybeicjbcokml424zdoxm5qwadbkqguxf2iok54mrtvu522xjlr4e2b2m" type="video/mp4"/></video><div className="about-sneak-grid" >
-          </div>
+          <video className="about-video" autoPlay loop muted playsInline>
+            <source src="https://gold-faithful-guan-207.mypinata.cloud/ipfs/bafybeicjbcokml424zdoxm5qwadbkqguxf2iok54mrtvu522xjlr4e2b2m" type="video/mp4"/>
+          </video>
           <div className="about-visual-text">
             <h2>The Collection</h2>
             <p>Pearl Cats are generated from multiple trait layers — backgrounds, body colors, eye styles, mouths, hats, accessories, and more. Each combination is unique and verified on-chain.</p>
             <p>After reveal, you'll discover your cat's rarity traits and how it compares to the rest of the collection.</p>
           </div>
         </div>
+
       </div>
+
+      {/* Sneak Peek */}
       <SneakPeek/>
+
     </main>
   )
 }
