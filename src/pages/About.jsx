@@ -40,7 +40,7 @@ export default function About() {
           <div className="big-stat"><span className="big-num">10</span><span className="big-label">Max per wallet</span></div>
         </div>
         <div className="about-visual">
-          <video className="about-video" autoPlay loop muted playsInline><source src="https://gold-faithful-guan-207.mypinata.cloud/ipfs/bafybeicjbcokml424zdoxm5qwadbkqguxf2iok54mrtvu522xjlr4e2b2m" type="video/mp4"/></video><div className="about-sneak-grid" style={{display:"none"}}>
+          <video className="about-video" autoPlay loop muted playsInline><source src="https://gold-faithful-guan-207.mypinata.cloud/ipfs/bafybeicjbcokml424zdoxm5qwadbkqguxf2iok54mrtvu522xjlr4e2b2m" type="video/mp4"/></video><div className="about-sneak-grid" >
           <img src="/sneak1.jpg" alt="Pearl Cat"/>
           <img src="/sneak2.jpg" alt="Pearl Cat"/>
           <img src="/sneak3.jpg" alt="Pearl Cat"/>
