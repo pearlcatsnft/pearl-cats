@@ -2,7 +2,7 @@ import React from 'react'
 import './SneakPeek.css'
 
 const images = [
-  '/sneak1.jpg', '/sneak2.jpg', '/sneak3.jpg',
+  '/sneak1.jpg', '/sneak2.jpg', '/sneak3.jpg', '/s7.jpg', '/s8.jpg', '/s9.jpg', '/s10.jpg', '/s11.jpg', '/s12.jpg', '/s13.jpg', '/s14.jpg', '/s15.jpg',
   '/s1.jpeg', '/s2.jpeg', '/s3.jpeg', '/s4.jpeg', '/s5.jpeg',
 ]
 
