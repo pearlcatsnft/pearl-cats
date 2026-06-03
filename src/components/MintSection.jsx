@@ -15,9 +15,8 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
   const [displayMinted, setDisplayMinted] = useState(stats.minted)
   const totalCost = (amount * MINT_PRICE).toFixed(2)
 
-  // Slowly increment display counter every 2 minutes
+  // Slowly increment display counter every 5 minutes
   React.useEffect(() => {
-    setDisplayMinted(stats.minted)
     const interval = setInterval(() => {
       setDisplayMinted(prev => {
         if (prev < stats.total) return prev + 1
@@ -25,7 +24,7 @@ export default function MintSection({ wallet, stats, onOpenWallet }) {
       })
     }, 300000)
     return () => clearInterval(interval)
-  }, [stats.minted])
+  }, [])
 
   const progress = (displayMinted / stats.total) * 100
 
