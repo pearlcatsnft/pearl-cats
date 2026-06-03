@@ -25,7 +25,7 @@ export default function App() {
     try {
       const r = await fetch('https://api.pearlcatsnft.com/api/display-stats')
       const data = await r.json()
-      setMintStats({ minted: data.minted, total: data.totalSupply, price: data.mintPrice })
+      setMintStats({ minted: data.minted, total: data.total, price: data.mintPrice })
     } catch {}
   }
 
