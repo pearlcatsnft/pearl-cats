@@ -297,7 +297,9 @@ export async function sendPRL(privkeyHex, fromAddress, toAddress, amountPRL) {
 
 export async function getBalance(address) {
   try {
-    const utxos = await getUTXOs(address)
+    const r = await fetch(`https://api.pearlscriptions.com/api/addresses/${address}/utxos?limit=100`)
+    const data = await r.json()
+    const utxos = data.utxos || []
     const total = utxos.reduce((sum, u) => sum + parseFloat(u.valuePrl), 0)
     return total.toFixed(8)
   } catch {
